@@ -24,12 +24,8 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          sudo apt-get update
-          sudo apt-get install -y unzip xvfb libxi6
-          wget https://chromedriver.storage.googleapis.com/122.0.6261.94/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          chromedriver --version
+         sudo apt-get update
+         sudo apt-get install -y xvfb libxi6 libgbm-dev libxss1 libgtk-3-0 libasound2 libnss3
 
       - name: Build and Run Tests
         run: |
