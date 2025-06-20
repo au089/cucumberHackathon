@@ -25,7 +25,7 @@ jobs:
       - name: Install ChromeDriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
+          sudo apt-get install -y unzip xvfb libxi6
           wget https://chromedriver.storage.googleapis.com/122.0.6261.94/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/
@@ -33,7 +33,7 @@ jobs:
 
       - name: Build and Run Tests
         run: |
-          mvn clean test
+           xvfb-run --auto-servernum mvn clean test
       - name: Publish JSON to Dashboard
         run: |
           curl -X POST  https://c6d4-2401-4900-1cb4-b8fd-a822-dcba-bfbb-3675.ngrok-free.app/api/executions \
