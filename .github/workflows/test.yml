@@ -30,7 +30,9 @@ jobs:
       - name: Build and Run Tests
         run: |
            xvfb-run --auto-servernum mvn clean verify
+           
       - name: Publish JSON to Dashboard
+        if: always()
         run: |
           curl -v -X POST https://ae29-2401-4900-1cb4-b8fd-a822-dcba-bfbb-3675.ngrok-free.app/api/executions \
             -H "Content-Type: application/json" \
